@@ -33,7 +33,6 @@ Tạo thơ cơ bản
 {
   "prompt": "tình yêu đẹp như",
   "max_length": 300,
-  "temperature": 1.0
 }
 ```
 
@@ -43,7 +42,6 @@ Tạo thơ với điều khiển temperature
 {
   "prompt": "thiên nhiên xanh tươi",
   "max_length": 300,
-  "temperature": 1.2
 }
 ```
 
@@ -59,24 +57,20 @@ Tạo thơ với điều khiển temperature
 {
   "generated_text": "tình yêu đẹp như hoa nở trong tim...",
   "original_prompt": "tình yêu đẹp như",
-  "vocab_size": 194
 }
 ```
 
 ## Model Architecture
 
 - **Transformer-based GPT**: 12 layers, 12 attention heads
-- **Embedding dimension**: 512
-- **Context length**: 256 tokens
-- **Vocabulary**: 194 unique characters (Vietnamese lowercase)
+- **Embedding dimension**: 768
+- **Context length**: 512 tokens
 
 ## Lưu ý
 
 - Model sẽ tự động convert input text thành lowercase
 - Chỉ hỗ trợ các ký tự có trong vocabulary training
 - Độ dài prompt nên dưới 200 ký tự để tối ưu
-- Temperature cao (1.5-2.0) = sáng tạo hơn nhưng có thể kém logic
-- Temperature thấp (0.1-0.8) = conservative hơn nhưng coherent
 
 ## Technical Stack
 
