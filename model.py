@@ -209,39 +209,39 @@ if device == 'cuda':
     print(f"GPU memory allocated: {torch.cuda.memory_allocated() / 1e6:.2f} MB")
     print(f"GPU memory reserved: {torch.cuda.memory_reserved() / 1e6:.2f} MB")
 
-# # Step 14: Training loop
-# print("Step 6: Starting training...")
-# start_time = time.time()
-# for iter in tqdm(range(max_iters), desc="Training"):
-#     if iter % eval_interval == 0 or iter == max_iters - 1:
-#         # print("  Starting loss estimation...")
-#         losses = estimate_loss()
-#         print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
+# Step 14: Training loop
+print("Step 6: Starting training...")
+start_time = time.time()
+for iter in tqdm(range(max_iters), desc="Training"):
+    if iter % eval_interval == 0 or iter == max_iters - 1:
+        # print("  Starting loss estimation...")
+        losses = estimate_loss()
+        print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
     
-#     step_start = time.time()
-#     xb, yb = get_batch('train')
-#     # print("  Batch loaded")
+    step_start = time.time()
+    xb, yb = get_batch('train')
+    # print("  Batch loaded")
     
-#     logits, loss = model(xb, yb)
-#     # print("  Forward pass done")
+    logits, loss = model(xb, yb)
+    # print("  Forward pass done")
     
-#     optimizer.zero_grad(set_to_none=True)
-#     loss.backward()
-#     # print("  Backward pass done")
+    optimizer.zero_grad(set_to_none=True)
+    loss.backward()
+    # print("  Backward pass done")
     
-#     optimizer.step()
+    optimizer.step()
     
 
 
-# final_model_path = os.path.join('/kaggle/working', 'final_model.pt')
-# torch.save({
-#     'model_state_dict': model.state_dict(),
-#     'optimizer_state_dict': optimizer.state_dict(),
-# }, final_model_path)
-# print(f"Step 6: Final model saved to {final_model_path}")
+final_model_path = os.path.join('/kaggle/working', 'final_model.pt')
+torch.save({
+    'model_state_dict': model.state_dict(),
+    'optimizer_state_dict': optimizer.state_dict(),
+}, final_model_path)
+print(f"Step 6: Final model saved to {final_model_path}")
 
 # Step 15: Generate sample text
-# print("Step 7: Generating sample...")
-# context = torch.tensor([encode("start of a poem")], dtype=torch.long, device=device)
-# generated = m.generate(context, max_new_tokens=500)[0].tolist()
-# print(decode(generated))
+print("Step 7: Generating sample...")
+context = torch.tensor([encode("start of a poem")], dtype=torch.long, device=device)
+generated = m.generate(context, max_new_tokens=500)[0].tolist()
+print(decode(generated))
