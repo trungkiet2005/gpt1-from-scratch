@@ -135,14 +135,6 @@ python test_api.py
 }
 ```
 
-## Model Architecture
-
-- **Transformer-based GPT**: 12 layers, 12 attention heads
-- **Embedding dimension**: 512
-- **Context length**: 256 tokens
-- **Vocabulary**: 194 unique characters (Vietnamese lowercase)
-- **Parameters**: ~87M parameters
-
 ## Development
 
 ### Local Development
